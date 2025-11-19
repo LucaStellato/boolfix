@@ -17,6 +17,8 @@ function App() {
   }
   return (
     <>
+
+      <input type='text' value={searchterm} placeholder='Cerca il film che preferisci' />
       <ul>
         {films.map((film) => (
           <li>{film.original_title}</li>
