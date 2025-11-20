@@ -8,8 +8,10 @@ import "flag-icons/css/flag-icons.min.css";
 function App() {
   const endpointKey = import.meta.env.VITE_API_KEY;
   const [films, setFilm] = useState([]);
+
   const [searchterm, setSearchTerm] = useState('')
   const endpoint = `https://api.themoviedb.org/3/search/movie?api_key=${endpointKey}&query=${searchterm}`
+  const endpoint_series = `https://api.themoviedb.org/3/search/tv?api_key=${endpointKey}&query=scrubs`
   useEffect(fetchFilm, [])
   function fetchFilm() {
     axios.get(endpoint).then(response => {
@@ -27,7 +29,7 @@ function App() {
             <br />
             {film.original_title}
             <br />
-            <span className={`fi fi-it`}></span>
+            <span className={`fi fi-${film.original_language}`}></span>
             <br />
             {film.vote_average}</li>
 
