@@ -17,6 +17,11 @@ function App() {
     axios.get(endpoint).then(response => {
       setFilm(response.data.results)
     })
+    function fetchSeries() {
+      axios.get(endpoint_series).then(response => {
+        setSeries(response.data.result)
+      })
+    }
   }
   return (
     <>
