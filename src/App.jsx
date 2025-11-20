@@ -3,11 +3,12 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import axios from 'axios'
+import "flag-icons/css/flag-icons.min.css";
 
 function App() {
   const endpointKey = import.meta.env.VITE_API_KEY;
   const [films, setFilm] = useState([]);
-  const [searchterm, setSearchTerm] = useState([])
+  const [searchterm, setSearchTerm] = useState('')
   const endpoint = `https://api.themoviedb.org/3/search/movie?api_key=${endpointKey}&query=${searchterm}`
   useEffect(fetchFilm, [])
   function fetchFilm() {
@@ -22,16 +23,18 @@ function App() {
       <button onClick={fetchFilm}>Cerca</button>
       <ul>
         {films.map((film) => (
-          <div style={{ display: 'flex' }}>
-            <li>{film.title}
-              <p>{film.original_title}</p>
-              <p>{film.original_language}</p>
-              <p>{film.vote_average}</p></li>
-          </div>
+          <li>{film.title}
+            <br />
+            {film.original_title}
+            <br />
+            <span className={`fi fi-it`}></span>
+            <br />
+            {film.vote_average}</li>
+
 
 
         ))}
-      </ul>
+      </ul >
     </>
   )
 }
